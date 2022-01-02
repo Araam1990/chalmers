@@ -1,0 +1,44 @@
+QAflisp - FLISP Absolute crossassembler, Version 1.1
+(c) GMV 1989-2020
+
+
+File: RunDiodeDelay.lst
+                        1. ;	Set I/O variables
+FB                      2. LED:	EQU	$FB
+                        3. 
+                        4. ;	Set start adress for program
+20                      5. 	ORG	$20
+                        6. 
+                        7. ;	The main loop
+20 92 20                8. start:	LDSP	#$20
+22 34 26                9. 	JSR	main
+24 33 20               10. 	JMP	start
+                       11. 
+                       12. ;	The loop's main function
+26 01 FE               13. main:	ANDCC	#$FE
+28 F0 01               14. 	LDA	#$01
+                       15. 
+                       16. ;	The loop's main function's loop
+2A E1 FB               17. main_1:	STA	LED
+2C 0D                  18. 	ROLA
+2D 34 31               19. 	JSR	Delay
+2F 33 2A               20. 	JMP	main_1
+                       21. 
+                       22. ;	Init delay
+31 10                  23. Delay:	PSHA
+32 13                  24. 	PSHC
+33 F1 3B               25. 	LDA	DelayValue
+                       26. 
+                       27. ;	Delay loop
+35 08                  28. Delay_1:	DECA
+36 25 FD               29. 	BNE	Delay_1
+38 17                  30. 	PULC
+39 14                  31. 	PULA
+3A 43                  32. 	RTS
+                       33. 
+3B                     34. DelayValue:	
+3B 10                  35. 	FCB	$10
+3C                     36. 	
+                       37. ;	Set reset vector
+FF                     38. 	ORG	$FF
+FF 20                  39. 	FCB	start

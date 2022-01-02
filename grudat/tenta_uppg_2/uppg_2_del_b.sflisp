@@ -1,0 +1,104 @@
+P 		EQU 	$FB 		;Def InPort1, Strömbrytare 
+Q 		EQU 	$FC 		;Def UtPort2, Hex display2
+R 		EQU 	$FB 		;Def UtPort1, Hex display1
+PAPB 		RMB 	1 		;Variabel för Inportens värde
+PA		RMB	1		;Variabel för pa värdet
+PB		RMB	1		;Variabel för pb värdet
+NewValue	RMB	1		;Variabel för nytt värde
+IRQVektor	EQU	$FD		;Def avbrottsvektor
+StartDisplay	EQU	$20	
+BOS		EQU	$FA		;Def bottom of stack
+
+
+		ORG	StartDisplay
+Start
+		LDSP	#BOS		;Init stackpekare
+
+		LDX	#IRQRutin	;Adress till avvbrottshanterare
+		STX	IRQVektor	;Init av irq-vektor
+		ANDCC	#%00001111	;Nollställning av I-flaggan
+
+;Main loopen
+Main
+		JSR	ConvDisp
+		BRA	Main
+
+;Rutinen som hanterar nya värden
+ConvDisp
+		LDA	NewValue
+		CMPA	#0
+		BEQ	ReturnToMain	;Om inget nytt värde kommit in så hoppar vi tillbaka till main
+		CLR	NewValue	;Nollställ variabeln för nytt värde
+		JSR	GetPA
+		JSR	GetPB
+
+;Beräkning av R
+		LDA	PA
+		ADDA	PB
+		STA	R
+
+;Kolla om värdet är mindre än 1A
+		CMPA	#$1A
+		BCS	ValidInput
+		LDA	#$10
+		TFR	A,CC		;Ett ställ I flaggan för att hindra framtida avbrott
+
+ValidInput
+		JSR	GetPAPB
+		LDA	PAPB
+		STA	Q
+
+ReturnToMain
+		RTS
+
+;Rutin för att hämta PA från det inlästa PAPB värdet
+GetPA
+		CLR	PA
+		ASR	PAPB
+		ROL	PA
+		ASR	PAPB
+		ROL	PA
+		ASR	PAPB
+		ROL	PA
+		ASR	PAPB
+		ROL	PA
+		RTS
+
+;Rutin för att hämta PB från det inlästa PAPB värdet
+GetPB
+		CLR	PB
+		ASR	PAPB
+		ROL	PB
+		ASR	PAPB
+		ROL	PB
+		ASR	PAPB
+		ROL	PB
+		ASR	PAPB
+		ROL	PB
+		RTS
+
+;Rutin för att skapa det riktiga PAPB värdet
+GetPAPB
+		CLR	PAPB
+		LDA	PAPB
+		ADDA	PA
+		STA	PAPB
+		ASLA
+		ASLA
+		ASLA
+		ASLA
+		ADDA	PB
+		STA	PAPB
+		RTS
+		
+	
+
+;IRQrutin: Laddar in det nya värdet och uppdaterar variabeln som anger att ett nytt värde kommit in
+IRQRutin
+		LDA	P
+		STA	PAPB
+		INC	NewValue
+		RTI
+
+		ORG	$FF
+		FCB	StartDisplay

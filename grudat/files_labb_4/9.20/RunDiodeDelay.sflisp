@@ -1,0 +1,39 @@
+;	Set I/O variables
+LED:	EQU	$FB
+
+;	Set start adress for program
+	ORG	$20
+
+;	The main loop
+start:	LDSP	#$20
+	JSR	main
+	JMP	start
+
+;	The loop's main function
+main:	ANDCC	#$FE
+	LDA	#$01
+
+;	The loop's main function's loop
+main_1:	STA	LED
+	ROLA
+	JSR	Delay
+	JMP	main_1
+
+;	Init delay
+Delay:	PSHA
+	PSHC
+	LDA	DelayValue
+
+;	Delay loop
+Delay_1:	DECA
+	BNE	Delay_1
+	PULC
+	PULA
+	RTS
+
+DelayValue:	
+	FCB	$10
+	
+;	Set reset vector
+	ORG	$FF
+	FCB	start

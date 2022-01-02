@@ -1,0 +1,43 @@
+;	Set I/O addresses
+INPORT:		EQU	$FC	; Dipswitch
+OUTPORT:		EQU	$FB	; Stepper motor
+
+;	Set data variables
+		ORG	$00
+State_index:	FCB	$FF
+State_vector:	FCB	$05,$04,$06,$02,$0A,$08,$09,$01
+
+;	Inits the specified values
+		ORG	$20
+Start:		CLR	State_index
+		LDX	#State_vector
+
+;	Performs the delay subroutine
+Main:		LDA 	INPORT
+		JSR	Delay
+
+;	Sends the current state to the stepper
+		LDA	State_index
+		LDA	A,X
+		STA	OUTPORT
+
+;	Updates the state_index and loops to Main
+		JSR	NextState
+		JMP	Main
+
+;	The delay subroutine, gives a delay based on A
+Delay:		BNE	Delay_deca
+		RTS
+Delay_deca:	DECA
+		JMP 	Delay
+
+;	Increments state_index and does a modulo 8
+NextState:	INC	State_index
+		LDA	State_index
+		ANDA	#$07
+		STA	State_index
+		RTS
+
+;	Set reset vector
+		ORG	$FF
+		FCB	Start

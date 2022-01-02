@@ -1,0 +1,109 @@
+QAflisp - FLISP Absolute crossassembler, Version 1.1
+(c) GMV 1989-2020
+
+
+File: uppg_2_del_b.lst
+FB                      1. P 		EQU 	$FB 		;Def InPort1, Strömbrytare 
+FC                      2. Q 		EQU 	$FC 		;Def UtPort2, Hex display2
+FB                      3. R 		EQU 	$FB 		;Def UtPort1, Hex display1
+00 00                   4. PAPB 		RMB 	1 		;Variabel för Inportens värde
+01 00                   5. PA		RMB	1		;Variabel för pa värdet
+02 00                   6. PB		RMB	1		;Variabel för pb värdet
+03 00                   7. NewValue	RMB	1		;Variabel för nytt värde
+FD                      8. IRQVektor	EQU	$FD		;Def avbrottsvektor
+20                      9. StartDisplay	EQU	$20	
+FA                     10. BOS		EQU	$FA		;Def bottom of stack
+                       11. 
+                       12. 
+20                     13. 		ORG	StartDisplay
+20                     14. Start
+20 92 FA               15. 		LDSP	#BOS		;Init stackpekare
+                       16. 
+22 90 83               17. 		LDX	#IRQRutin	;Adress till avvbrottshanterare
+24 30 FD               18. 		STX	IRQVektor	;Init av irq-vektor
+26 01 0F               19. 		ANDCC	#%00001111	;Nollställning av I-flaggan
+                       20. 
+                       21. ;Main loopen
+28                     22. Main
+28 34 2C               23. 		JSR	ConvDisp
+2A 21 FC               24. 		BRA	Main
+                       25. 
+                       26. ;Rutinen som hanterar nya värden
+2C                     27. ConvDisp
+2C F1 03               28. 		LDA	NewValue
+2E 97 00               29. 		CMPA	#0
+30 24 19               30. 		BEQ	ReturnToMain	;Om inget nytt värde kommit in så hoppar vi tillbaka till main
+32 35 03               31. 		CLR	NewValue	;Nollställ variabeln för nytt värde
+34 34 4C               32. 		JSR	GetPA
+36 34 5F               33. 		JSR	GetPB
+                       34. 
+                       35. ;Beräkning av R
+38 F1 01               36. 		LDA	PA
+3A A6 02               37. 		ADDA	PB
+3C E1 FB               38. 		STA	R
+                       39. 
+                       40. ;Kolla om värdet är mindre än 1A
+3E 97 1A               41. 		CMPA	#$1A
+40 28 03               42. 		BCS	ValidInput
+42 F0 10               43. 		LDA	#$10
+44 18                  44. 		TFR	A,CC		;Ett ställ I flaggan för att hindra framtida avbrott
+                       45. 
+45                     46. ValidInput
+45 34 72               47. 		JSR	GetPAPB
+47 F1 00               48. 		LDA	PAPB
+49 E1 FC               49. 		STA	Q
+                       50. 
+4B                     51. ReturnToMain
+4B 43                  52. 		RTS
+                       53. 
+                       54. ;Rutin för att hämta PA från det inlästa PAPB värdet
+4C                     55. GetPA
+4C 35 01               56. 		CLR	PA
+4E 3F 00               57. 		ASR	PAPB
+50 3D 01               58. 		ROL	PA
+52 3F 00               59. 		ASR	PAPB
+54 3D 01               60. 		ROL	PA
+56 3F 00               61. 		ASR	PAPB
+58 3D 01               62. 		ROL	PA
+5A 3F 00               63. 		ASR	PAPB
+5C 3D 01               64. 		ROL	PA
+5E 43                  65. 		RTS
+                       66. 
+                       67. ;Rutin för att hämta PB från det inlästa PAPB värdet
+5F                     68. GetPB
+5F 35 02               69. 		CLR	PB
+61 3F 00               70. 		ASR	PAPB
+63 3D 02               71. 		ROL	PB
+65 3F 00               72. 		ASR	PAPB
+67 3D 02               73. 		ROL	PB
+69 3F 00               74. 		ASR	PAPB
+6B 3D 02               75. 		ROL	PB
+6D 3F 00               76. 		ASR	PAPB
+6F 3D 02               77. 		ROL	PB
+71 43                  78. 		RTS
+                       79. 
+                       80. ;Rutin för att skapa det riktiga PAPB värdet
+72                     81. GetPAPB
+72 35 00               82. 		CLR	PAPB
+74 F1 00               83. 		LDA	PAPB
+76 A6 01               84. 		ADDA	PA
+78 E1 00               85. 		STA	PAPB
+7A 0B                  86. 		ASLA
+7B 0B                  87. 		ASLA
+7C 0B                  88. 		ASLA
+7D 0B                  89. 		ASLA
+7E A6 02               90. 		ADDA	PB
+80 E1 00               91. 		STA	PAPB
+82 43                  92. 		RTS
+83                     93. 		
+83                     94. 	
+                       95. 
+                       96. ;IRQrutin: Laddar in det nya värdet och uppdaterar variabeln som anger att ett nytt värde kommit in
+83                     97. IRQRutin
+83 F1 FB               98. 		LDA	P
+85 E1 00               99. 		STA	PAPB
+87 37 03              100. 		INC	NewValue
+89 44                 101. 		RTI
+                      102. 
+FF                    103. 		ORG	$FF
+FF 20                 104. 		FCB	StartDisplay

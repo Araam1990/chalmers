@@ -1,0 +1,178 @@
+QAflisp - FLISP Absolute crossassembler, Version 1.1
+(c) GMV 1989-2020
+
+
+File: labbuppgift4C.lst
+FC                      1. Inport	EQU	$FC
+FB                      2. Utport	EQU	$FB
+05                      3. DelayC1	EQU	$5		;Dessa konstanter styr hur lång fördröjning Delay1s orsakar.
+02                      4. DelayC2	EQU	$2		;Ändra dem eventuellt i labbet så att fördröjnigen blir rimligt lång.
+                        5. 
+FF                      6. 	ORG	$FF
+FF 20                   7. 	FCB	$20
+                        8. 
+20                      9. 	ORG	$20
+                       10. 
+20                     11. Main:
+20 34 33               12. 	JSR	ReadAscii
+22 94 41               13. 	SUBA	#$41
+24 34 68               14. 	JSR	CheckInterval
+26 97 AA               15. 	CMPA	#$AA
+28 24 F6               16. 	BEQ	Main
+2A 0B                  17. 	ASLA
+2B 34 6F               18. 	JSR	SetCount
+2D 07                  19. 	INCA
+2E F4                  20. 	LDA	A,X
+2F 34 81               21. 	JSR	BlinkLoop
+31 21 ED               22. 	BRA	Main
+                       23. 
+                       24. ;	Reads the input from inport when bit 0 goes from 0->1
+33                     25. ReadAscii:
+33 34 3B               26. 	JSR	Await_0
+35 34 42               27. 	JSR	Await_1
+37 F1 FC               28. 	LDA	Inport
+39 0C                  29. 	LSRA
+3A 43                  30. 	RTS
+                       31. 
+                       32. ;	Waits for a 0 in bit 0
+3B                     33. Await_0:
+3B F1 FC               34. 	LDA	Inport
+3D 99 01               35. 	ANDA	#$01
+3F 25 FA               36. 	BNE	Await_0
+41 43                  37. 	RTS
+                       38. 
+                       39. ;	Waits for a 1 in bit 0
+42                     40. Await_1:
+42 F1 FC               41. 	LDA	Inport
+44 99 01               42. 	ANDA	#$01
+46 24 FA               43. 	BEQ	Await_1
+48 43                  44. 	RTS
+                       45. 
+                       46. ;	Subroutine for making the light blink depending on bit 7	
+49                     47. BlinkLight:
+49 10                  48. 	PSHA
+4A 34 5E               49. 	JSR	LightOn
+                       50. 
+                       51. ;	This checks bit 7
+4C 99 80               52. 	ANDA	#$80
+4E 24 06               53. 	BEQ	bit7is0
+                       54. 
+                       55. ;	If bit 7 is a 1 then this will perform
+                       56. ;	the delay subroutine 3 times
+50 34 89               57. bit7is1:	JSR	Delay1s
+52 34 89               58. 	JSR	Delay1s
+54 34 89               59. 	JSR	Delay1s
+                       60. 
+                       61. ;	This runs the delay 1 time before turning
+                       62. ;	off the lights and returning
+56 34 89               63. bit7is0:	JSR	Delay1s
+58 34 65               64. 	JSR	LightOff
+5A 34 89               65. 	JSR	Delay1s
+5C 14                  66. 	PULA
+5D 43                  67. 	RTS
+                       68. 
+                       69. ;	Turns on the lights
+5E                     70. LightOn:
+5E 10                  71. 	PSHA
+5F F0 FF               72. 	LDA	#$FF
+61 E1 FB               73. 	STA	Utport
+63 14                  74. 	PULA
+64 43                  75. 	RTS
+                       76. 
+                       77. ;	Turns off the lights
+65                     78. LightOff:
+65 35 FB               79. 	CLR	Utport
+67 43                  80. 	RTS
+                       81. 
+                       82. ;	Checks if the input is valid
+68                     83. CheckInterval:
+68 2F 0D               84. 	BLT	InvalidInput
+6A 97 19               85. 	CMPA	#$19
+6C 2C 09               86. 	BGT	InvalidInput
+6E 43                  87. 	RTS
+                       88. 
+                       89. ;	Fetches the count from morse code and sets
+                       90. ;	the Count variable to that value
+6F                     91. SetCount:
+6F 10                  92. 	PSHA
+70 90 9E               93. 	LDX	#MorseCode
+72 F4                  94. 	LDA	A,X
+73 E1 9D               95. 	STA	Count
+75 14                  96. 	PULA
+76 43                  97. 	RTS
+                       98. 
+                       99. ;	Displays the value AA on Utport for 1s
+77                    100. InvalidInput:
+77 F0 AA              101. 	LDA	#$AA
+79 E1 FB              102. 	STA	Utport
+7B 34 89              103. 	JSR	Delay1s
+7D 34 65              104. 	JSR	LightOff
+7F 21 9F              105. 	BRA	Main
+                      106. 
+                      107. ;	Iterates over Count and makes the light blink
+                      108. ;	according to the morse code data
+81                    109. BlinkLoop:
+81 34 49              110. 	JSR	BlinkLight
+83 0B                 111. 	ASLA
+84 38 9D              112. 	DEC	Count
+86 25 F9              113. 	BNE	BlinkLoop
+88 43                 114. 	RTS
+89                    115. 	
+                      116. ; Orsakar en fördröjning på ungefär 1s i simulatorn (vid snabb exekveringshastighet)
+                      117. ; Ändrar inga register
+89                    118. Delay1s:
+89 10                 119. 	PSHA
+8A 11                 120. 	PSHX
+8B 13                 121. 	PSHC
+8C 90 02              122. 	LDX	#DelayC2
+8E                    123. Delay1s_loop2:
+8E F0 05              124. 	LDA	#DelayC1
+90                    125. Delay1s_loop:
+90 08                 126. 	DECA
+91 25 FD              127. 	BNE	Delay1s_loop
+93 CC FF              128. 	LEAX	-1,X
+95 9C 00              129. 	CMPX	#0
+97 25 F5              130. 	BNE	Delay1s_loop2
+99 17                 131. 	PULC
+9A 15                 132. 	PULX
+9B 14                 133. 	PULA
+9C 43                 134. 	RTS
+                      135. 
+                      136. ; Data - Variabler
+9D                    137. Count:
+9D 00                 138. 	RMB	1
+                      139. 
+                      140. ; Data - Konstanter
+9E                    141. MorseCode:
+9E 02 40              142. 	FCB	2,%01000000 ;'A'
+A0 04 80              143. 	FCB	4,%10000000 ;'B'
+A2 04 A0              144. 	FCB	4,%10100000 ;'C'
+A4 03 80              145. 	FCB	3,%10000000 ;'D'
+A6 01 00              146. 	FCB	1,%00000000 ;'E'
+A8 04 20              147. 	FCB	4,%00100000 ;'F'
+AA 03 C0              148. 	FCB	3,%11000000 ;'G'
+AC 04 00              149. 	FCB	4,%00000000 ;'H'
+AE 02 00              150. 	FCB	2,%00000000 ;'I'
+B0 04 70              151. 	FCB	4,%01110000 ;'J'
+B2 03 A0              152. 	FCB	3,%10100000 ;'K'
+B4 04 40              153. 	FCB	4,%01000000 ;'L'
+B6 02 C0              154. 	FCB	2,%11000000 ;'M'
+B8 02 80              155. 	FCB	2,%10000000 ;'N'
+BA 03 E0              156. 	FCB	3,%11100000 ;'O'
+BC 04 60              157. 	FCB	4,%01100000 ;'P'
+BE 04 D0              158. 	FCB	4,%11010000 ;'Q'
+C0 03 40              159. 	FCB	3,%01000000 ;'R'
+C2 03 00              160. 	FCB	3,%00000000 ;'S'
+C4 01 80              161. 	FCB	1,%10000000 ;'T'
+C6 03 20              162. 	FCB	3,%00100000 ;'U'
+C8 04 10              163. 	FCB	4,%00010000 ;'V'
+CA 03 60              164. 	FCB	3,%01100000 ;'W'
+CC 04 90              165. 	FCB	4,%10010000 ;'X'
+CE 04 B0              166. 	FCB	4,%10110000 ;'Y'
+D0 04 C0              167. 	FCB	4,%11000000 ;'Z'
+D2                    168. 	
+D2                    169. 	
+D2                    170. 	
+D2                    171. 	
+D2                    172. 	
+D2                    173. 	

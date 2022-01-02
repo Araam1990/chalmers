@@ -1,0 +1,13 @@
+#ClearAllMemory
+#ClearAllRegisters
+
+#SetMemory		20=F0
+#SetMemory		21=07
+#SetMemory		22=F1
+#SetMemory		23=10
+#SetMemory		24=F2
+#SetMemory		25=01
+
+#SetRegister	SP=0F
+#SetMemory		10=81
+#SetMemory		FF=20

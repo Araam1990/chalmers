@@ -1,0 +1,12 @@
+#ClearAllMemory
+#ClearAllRegisters
+
+#SetMemory 20=05
+#SetMemory 21=07
+#SetMemory 22=EF
+#SetMemory 23=20
+#SetMemory 24=02
+#SetMemory 25=21
+#SetMemory 26=FA
+
+#SetMemory FF=20

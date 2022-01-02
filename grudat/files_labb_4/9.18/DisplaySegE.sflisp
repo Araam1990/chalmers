@@ -1,0 +1,32 @@
+;	Set I/O variables
+DIPSWITCH:	EQU	$FC
+SEGMENT7:	EQU	$FB
+
+;	Init data variables
+		ORG	$0
+seg_table:	FCB	$3F,$06,$5B,$4F,$66,$6D,$7D,$07,$7F,$6F
+SEG_ERROR:	FCB	$79
+
+;	Load seg_table start adress
+		ORG	$20
+DisplaySegE:	LDX	#seg_table
+
+;	Load DIPSWITCH value and compare
+DisplaySegE_1:	LDA	DIPSWITCH
+		CMPA	#$0A
+		BCS	DisplaySegE_2
+
+;	If A is not less than 10, do:
+		LDA	SEG_ERROR
+		JMP	DisplaySegE_3
+
+;	If A is less than 10, do:
+DisplaySegE_2:	LDA	A,X
+
+;	Display on SEGMENT7 and loop
+DisplaySegE_3:	STA	SEGMENT7
+		JMP	DisplaySegE_1
+
+;	Set reset vector
+		ORG	$FF
+		FCB	$20

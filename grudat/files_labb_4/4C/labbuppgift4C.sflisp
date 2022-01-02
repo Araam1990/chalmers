@@ -1,0 +1,173 @@
+Inport	EQU	$FC		; Dipswitch
+Utport	EQU	$FB		; Bargraph
+DelayC1	EQU	$5		;Dessa konstanter styr hur lång fördröjning Delay1s orsakar.
+DelayC2	EQU	$2		;Ändra dem eventuellt i labbet så att fördröjnigen blir rimligt lång.
+
+	ORG	$FF
+	FCB	$20
+
+	ORG	$20
+
+Main:
+	JSR	ReadAscii
+	SUBA	#$41
+	JSR	CheckInterval
+	CMPA	#$AA
+	BEQ	Main
+	ASLA
+	JSR	SetCount
+	INCA
+	LDA	A,X
+	JSR	BlinkLoop
+	BRA	Main
+
+;	Reads the input from inport when bit 0 goes from 0->1
+ReadAscii:
+	JSR	Await_0
+	JSR	Await_1
+	LDA	Inport
+	LSRA
+	RTS
+
+;	Waits for a 0 in bit 0
+Await_0:
+	LDA	Inport
+	ANDA	#$01
+	BNE	Await_0
+	RTS
+
+;	Waits for a 1 in bit 0
+Await_1:
+	LDA	Inport
+	ANDA	#$01
+	BEQ	Await_1
+	RTS
+
+;	Subroutine for making the light blink depending on bit 7	
+BlinkLight:
+	PSHA
+	JSR	LightOn
+
+;	This checks bit 7
+	ANDA	#$80
+	BEQ	bit7is0
+
+;	If bit 7 is a 1 then this will perform
+;	the delay subroutine 3 times
+bit7is1:	JSR	Delay1s
+	JSR	Delay1s
+	JSR	Delay1s
+
+;	This runs the delay 1 time before turning
+;	off the lights and returning
+bit7is0:	JSR	Delay1s
+	JSR	LightOff
+	JSR	Delay1s
+	PULA
+	RTS
+
+;	Turns on the lights
+LightOn:
+	PSHA
+	LDA	#$FF
+	STA	Utport
+	PULA
+	RTS
+
+;	Turns off the lights
+LightOff:
+	CLR	Utport
+	RTS
+
+;	Checks if the input is valid
+CheckInterval:
+	BLT	InvalidInput
+	CMPA	#$19
+	BGT	InvalidInput
+	RTS
+
+;	Fetches the count from morse code and sets
+;	the Count variable to that value
+SetCount:
+	PSHA
+	LDX	#MorseCode
+	LDA	A,X
+	STA	Count
+	PULA
+	RTS
+
+;	Displays the value AA on Utport for 1s
+InvalidInput:
+	LDA	#$AA
+	STA	Utport
+	JSR	Delay1s
+	JSR	LightOff
+	BRA	Main
+
+;	Iterates over Count and makes the light blink
+;	according to the morse code data
+BlinkLoop:
+	JSR	BlinkLight
+	ASLA
+	DEC	Count
+	BNE	BlinkLoop
+	RTS
+	
+; Orsakar en fördröjning på ungefär 1s i simulatorn (vid snabb exekveringshastighet)
+; Ändrar inga register
+Delay1s:
+	PSHA
+	PSHX
+	PSHC
+	LDX	#DelayC2
+Delay1s_loop2:
+	LDA	#DelayC1
+Delay1s_loop:
+	DECA
+	BNE	Delay1s_loop
+	LEAX	-1,X
+	CMPX	#0
+	BNE	Delay1s_loop2
+	PULC
+	PULX
+	PULA
+	RTS
+
+; Data - Variabler
+Count:
+	RMB	1
+
+; Data - Konstanter
+MorseCode:
+	FCB	2,%01000000 ;'A'
+	FCB	4,%10000000 ;'B'
+	FCB	4,%10100000 ;'C'
+	FCB	3,%10000000 ;'D'
+	FCB	1,%00000000 ;'E'
+	FCB	4,%00100000 ;'F'
+	FCB	3,%11000000 ;'G'
+	FCB	4,%00000000 ;'H'
+	FCB	2,%00000000 ;'I'
+	FCB	4,%01110000 ;'J'
+	FCB	3,%10100000 ;'K'
+	FCB	4,%01000000 ;'L'
+	FCB	2,%11000000 ;'M'
+	FCB	2,%10000000 ;'N'
+	FCB	3,%11100000 ;'O'
+	FCB	4,%01100000 ;'P'
+	FCB	4,%11010000 ;'Q'
+	FCB	3,%01000000 ;'R'
+	FCB	3,%00000000 ;'S'
+	FCB	1,%10000000 ;'T'
+	FCB	3,%00100000 ;'U'
+	FCB	4,%00010000 ;'V'
+	FCB	3,%01100000 ;'W'
+	FCB	4,%10010000 ;'X'
+	FCB	4,%10110000 ;'Y'
+	FCB	4,%11000000 ;'Z'
+	
+	
+	
+	
+	
+	

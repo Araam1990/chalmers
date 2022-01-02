@@ -1,0 +1,49 @@
+QAflisp - FLISP Absolute crossassembler, Version 1.1
+(c) GMV 1989-2020
+
+
+File: Labbuppg2B.lst
+                        1. ;	Set I/O addresses
+FC                      2. INPORT:		EQU	$FC
+FB                      3. OUTPORT:		EQU	$FB
+                        4. 
+                        5. ;	Set data variables
+00                      6. 		ORG	$00
+00 FF                   7. State_index:	FCB	$FF
+01 05 04 06 02 0A 08    8. State_vector:	FCB	$05,$04,$06,$02,$0A,$08,$09,$01
+     09 01            
+                        9. 
+                       10. ;	Inits the specified values
+20                     11. 		ORG	$20
+20 35 00               12. Start:		CLR	State_index
+22 90 01               13. 		LDX	#State_vector
+                       14. 
+                       15. ;	Performs the delay subroutine
+24 F1 FC               16. Main:		LDA 	INPORT
+26 34 31               17. 		JSR	Delay
+                       18. 
+                       19. ;	Sends the current state to the stepper
+28 F1 00               20. 		LDA	State_index
+2A F4                  21. 		LDA	A,X
+2B E1 FB               22. 		STA	OUTPORT
+                       23. 
+                       24. ;	Updates the state_index and loops to Main
+2D 34 37               25. 		JSR	NextState
+2F 33 24               26. 		JMP	Main
+                       27. 
+                       28. ;	The delay subroutine, gives a delay based on A
+31 25 01               29. Delay:		BNE	Delay_deca
+33 43                  30. 		RTS
+34 08                  31. Delay_deca:	DECA
+35 33 31               32. 		JMP 	Delay
+                       33. 
+                       34. ;	Increments state_index and does a modulo 8
+37 37 00               35. NextState:	INC	State_index
+39 F1 00               36. 		LDA	State_index
+3B 99 07               37. 		ANDA	#$07
+3D E1 00               38. 		STA	State_index
+3F 43                  39. 		RTS
+                       40. 
+                       41. ;	Set reset vector
+FF                     42. 		ORG	$FF
+FF 20                  43. 		FCB	Start
