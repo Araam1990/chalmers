@@ -105,25 +105,25 @@
 
 	before
 			___________
-	x = -->	| :K 	  |<----------|
-			| ls = [  |	   _______|__
+	x = --> | :K      |<----------|
+			| ls = [  |    _______|__
 			|     a,--|--> | :L   | |
-			|	  b,--|--> | k = -| |
-			|	  c---|--> |________|
+			|     b,--|--> | k = -| |
+			|     c---|--> |________|
 			| ]       |
 			|_________|
 
 	after
 			___________
 	x = -->	| :K 	  |<----------|
-			| ls = [  |	   _______|__
+			| ls = [  |    _______|__
 			|     a,--|--> | :L   | |
-			|	  b,--|--> | k = -| |
-			|	  c,--|--> |________|
-			|	  d---|-|  __________ 
+			|     b,--|--> | k = -| |
+			|     c,--|--> |________|
+			|     d---|-|  __________ 
 			| ]       | -->| :L     |
 			|_________|    | k = -| |
-					^	   |______|_|
+					^      |______|_|
 					|-------------|
 """
 
@@ -161,7 +161,6 @@
 				raise ArgumentError
 			diffs.append(el_2 - el_1)
 		return diffs
-
 """
 
 """	Uppgift A5: 3 poäng
@@ -170,7 +169,10 @@
 	dem åt. 
 
 	Svar:
+	- Ett expression är något som representerar ett värde och består av en kombination av värden, variabler samt operatorer. Exempel är 42, True, (7+5*2), "hej" osv.
+	- Ett statement är en bit kod som har en effekt utifrån ett eller flera expressions, kan vara att skapa en variabel, skriva ut ett värde, mm
 	
+	- TL;DR Man kan säga att ett expression översätts till ett värde och statements använder värden för att göra något
 """
 
 """	Uppgift A6: 4 poäng
@@ -178,7 +180,8 @@
 	Förklara Principle of Least Astonishment. Ge konkreta exempel på vad den innebär. 
 
 	Svar:
-
+	- Principen innebär att man inte ska bli förvånad över vad något är eller gör. Detta kan bland annat uppnås genom bra namngivning, dokumentation och funktionell nedbrytning.
+	- Har vi ett lista som heter numbers så bör den inte innehålla strängar med namn, en funktion bör inte ändra på ett argument såvida det inte framgår tydligt på något sätt, döp inte variabler till en bokstav (vanliga undantag här är x och y som kordinater samt i som index) utan skriv vad de är.
 """
 
 """	Uppgift A7: 4 poäng 
@@ -341,7 +344,8 @@
 	Förklara begreppet gränssnitt, och hur vi bör förhålla oss. 
 
 	Svar:
-
+	- Gränssnitt är hur ett objekt ser ut utifrån, alltså vilken funktionalitet samt vilka attribut som finns på objektet.
+	- 
 """
 
 """	Uppgift B3: 5 poäng 
@@ -350,7 +354,49 @@
 	avgöra vilken datastruktur vi väljer att använda i en specifik situation.
 
 	Svar:
+	- Datastrukturer är olika sätt man kan lagra data på som har sina fördelar i olika tillfällen.
+	- Exempel på vanliga datastrukturer är list/array, dictionary och set.
+	- Det som bör avgöra hur vi väljer datastruktur är hur det känns mest logiskt att representera datan. Säg att vi vill veta vilka unika värden som finns i en lista av integers
+		- Vi skulle kunna representera det som en lista genom följande:
+		1. 	unique_ints = []
+		2. 	for num in in_list:
+		3. 		if num not in unique_ints:
+		4.			unique_ints.append(num)
+		Detta fungerar alldeles utmärkt men kan snabbt ta för lång tid vilket är varför nästa exempel är bättre
+		- Vi kan använda oss av en dictionary:
+		1. 	unique_ints = {}
+		2. 	for num in in_list:
+		3. 		if num not in unique_ints:  # Denna if-satsen behövs inte, resultatet blir detsamma, beror på vad man trivs bäst med
+		4.			unique_ints[num] = True
+		Nu när vi använder oss av en dictionary så slipper man rad 3 i förra exemplet i vilket man itererar igenomn unique_ints listan som kan ta väldigt lång tid om man har en lång lista med många unika siffror
+		- Vi kan även representera det som en mängd, ett set:
+		unique_ints = set()
+		for num in in_list:
+			if num not in unique_ints:   # Samma här, denna if-satsen behövs inte, resultatet blir detsamma, beror på vad man trivs bäst med
+				unique_ints.add(num)
 
+		eller bara unique_ints = set(in_list)
+		Då ett set egentligen bara är en True/False dict så uppnår detta samma resultat som förra exemplet
+	Här har vi nu löst problemet med hjälp av 3 olika datastrukturer och vilken man vill använda beror helt på situationen och vad som känns mest logiskt
+	- Vi inser nu att vi inte bara ville veta vilka unika nummer som finns i listan utan även räkna hur många av varje vi har
+		- Vi skulle fortfarande kunna representera det som listor genom följande:
+		1. 	unique_ints = []
+		2.	counts = []
+		3. 	for num in in_list:
+		4. 		i = unique_ints.index(num)
+		5. 		if i >= 0:
+		6. 			counts[i] += 1
+		7.		else:
+		8. 			unique_ints.append(num)
+		9.			counts.append(1)
+		- Vi kan även fortfarande använda oss av en dictionary:
+		1. 	unique_ints = {}
+		2. 	for num in in_list:
+		3. 		if num not in unique_ints:
+		4.			unique_ints[num] = 0
+		5. 		unique_ints[num] += 1
+		- Men vi kan inte representera det som en mängd, ett set, längre då vi inte kan matcha ett värde med annat än True/False
+	Tänk bara på att det oftast finns fler än en datastruktur som kan fungera.
 """
 
 """	Uppgift B4: 5 poäng 
@@ -359,7 +405,28 @@
 	Förklara hur respektive mekanism löser problemet, och diskutera för och nackdelar. 
 
 	Svar:
+	Arv 
+	- innebär att en klass kan ärva funktionalitet och attribut från en annan klass och därmed bli en subtyp respektive supertyp. 
+	- Säg att vi har en klass Cat och en klass Animal, här är det mest logiskt att Cat ärver av Animal då Cat är en typ av Animal och Animal delar all funktionalitet med Cat, skulle vi använda komposition så skulle förhållandet bli att Cat har ett Animal (en katt har ett djur) vilket inte är logiskt alls.
+	- Fördelen här kommer sen när vi vill implementera fler djur, då kan alla ärva av Animal och få viss grundfunktionalitet som respektive djur sedan kan utöka och göra om på sitt sätt  och vi undviker därmed kodduplicering. Alla djur kan inte flyga så Animal ska inte kunna flyga men fåglar kan så de får implementera det, eller skapa en till klass FlyingAnimal som ärver av Animal och som blir grunden till fåglar osv. 
+	- En annan fördel är att vi kan hantera subtyperna som supertypen Animal, säg att vi har en lista med djur som alla ska göra något, då Animal från grunden har en do_something metod så kan vi hantera alla djur i denna listan som Animals:
+	for (Animal animal : animals) {
+		animal.do_something()
+	}
+	
+	Komposition 
+	- innebär att en klass använder ett annat objekt för att förse klassen med viss eller all funktionalitet av objektet. 
+	- Säg att vi har en Car och denna bilen har en Engine, då är det mer logiskt att använda komposition så att Car har en attribut engine som är en instans av klassen Engine än att Car ska ärva från Engine då det skulle säga att Car är en typ av Engine.
+	- Fördelen här kommer sen när vi implementerar andra typer av fordon, säg en båt eller flygplan, de har ochså motorer så då kan de använda den redan existerande Engine klassen för den funktionaliteten och därmed slipper implementera en helt ny motor i respektive klass och vi undviker därmed kodduplicering.
+	- En nackdel här är att vi inte direkt kan hantera alla dessa klasser med motor
+	for vehicle with engine in vehicles:
+		vehicle.do_something()
+	men det här här interfaces kommer in och räddar oss, vi kan göra ett interface Moveable med en attribut engine och funktionalitet för att t.ex. gasa, bromsa och svänga som dessa fordon implementerar, då kan vi göra på följande sätt:
+	for (Moveable vehicle : vehicles) {
+		vehicle.do_something()
+	}
 
+	Så frågan är, HAR klassen ett annat objekt på det sättet som en bil HAR en motor eller ÄR klassen ett annat objekt på det sätt som att en katt ÄR ett djur?
 """
 
 """	Uppgift B5: 6 poäng 
