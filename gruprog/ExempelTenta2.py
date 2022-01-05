@@ -11,7 +11,7 @@
 	Vad?
 	- break avslutar den närmsta omlutande loopen
 	- continue går vidare till nästa iteration i den närmsta omslutande loopen
-	- return returnerar ett värde från en funktion
+	- return avslutar en funktion och returnerar det givna värdet
 
 	Varför/hur?
 	- break används när resterande iterationer genom en loop inte längre är nödvändig. Säg att vi har en funktion som vill kolla om en lista är sorterad, då loopar vi över listan och stöter på att element i är större än element i+1 (inte sorterad), då kan vi spara det i en variabel och använda oss av en break för att inte loopa över resterande element i listan då vi redan har resultatet vi är ute efter.
@@ -123,8 +123,8 @@
 			|     d---|-|  __________ 
 			| ]       | -->| :L     |
 			|_________|    | k = -| |
-					^      |______|_|
-					|-------------|
+				^      |______|_|
+				|-------------|
 """
 
 """	Uppgift A4: 6 poäng
