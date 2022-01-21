@@ -1,5 +1,6 @@
 from abc import ABC, abstractclassmethod
 
+# Links
 """
 https://play.chalmers.se/media/Lecture+7-2A+Revision/0_q3b77w38
 https://refactoring.guru/design-patterns/decorator
@@ -8,7 +9,6 @@ https://chalmers.instructure.com/courses/16169/files/1955820?wrap=1
 """
 
 # Principles
-
 """
 1. Explain the principle.
 2. Give a concrete example of how you follow, or break, the principle.
@@ -58,7 +58,7 @@ Reduces unnecessary code since classes dont need to implement methods they don't
 """
 We should depend on abstractions and not on concrete implementations. Use supertypes, or make one if its needed and one doesn't exist, instead of subtypes since its a weaker dependency.
 
-Example: 
+Example: Use Vehicle instead of Car, or maybe even the Movable interface if that is enough
 
 Reduce dependencies, maintanable, flexibility
 """
@@ -87,9 +87,9 @@ Example: instead of fetching the same data in multiple classes within a module, 
 reuseable, readable, maintainable
 """
 
-# Prefer Composition over Inheritance
+# Favor Composition over Inheritance
 """
-If we have a class A that uses functionality of class B then we should make use of an instance of a class B rather than inherit from it. This because inheritance is a stronger dependency than composition
+If we have a class A that uses functionality of class B then we should try to make use of an instance of a class B rather than inherit from it. This because inheritance is a stronger dependency than composition
 
 Example: 
 
