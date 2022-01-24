@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="c_prog" Database="" Version="10000">
+  <Project Name="basic_io" Path="basic_io/basic_io.project" Active="No"/>
+  <Project Name="introc" Path="introc/introc.project" Active="No"/>
+  <Project Name="fibonacci" Path="fibonacci/fibonacci.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="basic_io" ConfigName="Debug"/>
+      <Project Name="introc" ConfigName="Debug"/>
+      <Project Name="fibonacci" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="basic_io" ConfigName="Release"/>
+      <Project Name="introc" ConfigName="Release"/>
+      <Project Name="fibonacci" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
