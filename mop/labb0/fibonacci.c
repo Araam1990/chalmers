@@ -1,8 +1,8 @@
 #include<stdio.h>  
 int main()  
-{  
+{
   int n, first = 0, second = 1, next, c;  
-  printf("Enter the number of terms\n");  
+  printf("Enter the number of terms:");  
   scanf("%d",&n);  
   printf("First %d terms of Fibonacci series are :‐\n",n);  
  

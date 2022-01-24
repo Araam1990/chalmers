@@ -93,6 +93,6 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="main.c"/>
+    <File Name="fibonacci.c"/>
   </VirtualDirectory>
 </CodeLite_Project>

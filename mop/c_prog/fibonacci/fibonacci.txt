@@ -1,1 +1,1 @@
-Debug/main.c.o
+Debug/fibonacci.c.o

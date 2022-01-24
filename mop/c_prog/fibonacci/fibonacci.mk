@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/codelite.app/Contents/SharedSupport/
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/fibonacci.c$(ObjectSuffix) 
 
 
 
@@ -91,10 +91,10 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c
-	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/fibonacci/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
+$(IntermediateDirectory)/fibonacci.c$(ObjectSuffix): fibonacci.c
+	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/fibonacci/fibonacci.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/fibonacci.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/fibonacci.c$(PreprocessSuffix): fibonacci.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/fibonacci.c$(PreprocessSuffix) fibonacci.c
 
 ##
 ## Clean
