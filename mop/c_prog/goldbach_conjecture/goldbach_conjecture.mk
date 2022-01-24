@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=fibonacci
+ProjectName            :=goldbach_conjecture
 ConfigurationName      :=Debug
 WorkspacePath          :=/Users/dennischristensen/Documents/chalmers/mop/c_prog
-ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/fibonacci
+ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/goldbach_conjecture
 IntermediateDirectory  :=$(ConfigurationName)
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E 
-ObjectsFileList        :="fibonacci.txt"
+ObjectsFileList        :="goldbach_conjecture.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c
-	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/fibonacci/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/goldbach_conjecture/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
 

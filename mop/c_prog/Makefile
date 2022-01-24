@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ fibonacci - Debug ]----------"
-	@cd "fibonacci" && "$(MAKE)" -f  "fibonacci.mk" && "$(MAKE)" -f  "fibonacci.mk" PostBuild
+	@echo "----------Building project:[ goldbach_conjecture - Debug ]----------"
+	@cd "goldbach_conjecture" && "$(MAKE)" -f  "goldbach_conjecture.mk"
 clean:
-	@echo "----------Cleaning project:[ fibonacci - Debug ]----------"
-	@cd "fibonacci" && "$(MAKE)" -f  "fibonacci.mk" clean
+	@echo "----------Cleaning project:[ goldbach_conjecture - Debug ]----------"
+	@cd "goldbach_conjecture" && "$(MAKE)" -f  "goldbach_conjecture.mk" clean
