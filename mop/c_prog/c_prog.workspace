@@ -2,8 +2,8 @@
 <CodeLite_Workspace Name="c_prog" Database="" Version="10000">
   <Project Name="basic_io" Path="basic_io/basic_io.project" Active="No"/>
   <Project Name="introc" Path="introc/introc.project" Active="No"/>
-  <Project Name="fibonacci" Path="fibonacci/fibonacci.project" Active="Yes"/>
-  <Project Name="goldbach_conjecture" Path="goldbach_conjecture/goldbach_conjecture.project" Active="No"/>
+  <Project Name="fibonacci" Path="fibonacci/fibonacci.project" Active="No"/>
+  <Project Name="goldbach_conjecture" Path="goldbach_conjecture/goldbach_conjecture.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

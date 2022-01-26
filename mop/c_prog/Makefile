@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ fibonacci - Debug ]----------"
-	@cd "fibonacci" && "$(MAKE)" -f  "fibonacci.mk"
+	@echo "----------Building project:[ test - Debug ]----------"
+	@cd "test" && "$(MAKE)" -f  "test.mk"
 clean:
-	@echo "----------Cleaning project:[ fibonacci - Debug ]----------"
-	@cd "fibonacci" && "$(MAKE)" -f  "fibonacci.mk" clean
+	@echo "----------Cleaning project:[ test - Debug ]----------"
+	@cd "test" && "$(MAKE)" -f  "test.mk" clean
