@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="chapter_4" Database="" Version="10000">
+  <Project Name="uppg4_1" Path="uppg4_1/uppg4_1.project" Active="Yes"/>
+  <Project Name="uppg4_2" Path="uppg4_2/uppg4_2.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="uppg4_1" ConfigName="Debug"/>
+      <Project Name="uppg4_2" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="uppg4_1" ConfigName="Release"/>
+      <Project Name="uppg4_2" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

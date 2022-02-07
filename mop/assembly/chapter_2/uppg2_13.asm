@@ -1,0 +1,15 @@
+	LDR	R0,i
+	LSL	R1,R0,#1
+	ADD	R0,R1,R0
+	LDR	R1,j
+	ADD	R0,R0,R1
+	LDR	R1,=m3
+	LDRB	R0,[R1,R0]
+	LDR	R1,=ch
+	STRB	R0,[R1]
+	
+	.ALIGN
+i:	.SPACE	4
+j:	.SPACE	4
+m3:	.BYTE	1,2,3,4,5,6,7,8,9
+ch:	.SPACE	1

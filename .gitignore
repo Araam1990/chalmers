@@ -1,0 +1,4 @@
+/mop/**/*.asm~~~
+/mop/**/*.elf
+/mop/**/*.lst
+/mop/**/*.s19

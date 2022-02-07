@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="labb_1" Database="" Version="10000">
+  <Project Name="keypad" Path="keypad/keypad.project" Active="Yes"/>
+  <Project Name="keyb_enhanced" Path="keyb_enhanced/keyb_enhanced.project" Active="No"/>
+  <Project Name="keyb_alt_ctrl" Path="keyb_alt_ctrl/keyb_alt_ctrl.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="keypad" ConfigName="Debug"/>
+      <Project Name="keyb_enhanced" ConfigName="Debug"/>
+      <Project Name="keyb_alt_ctrl" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="keypad" ConfigName="Release"/>
+      <Project Name="keyb_enhanced" ConfigName="Release"/>
+      <Project Name="keyb_alt_ctrl" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

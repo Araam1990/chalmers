@@ -1,3 +1,0 @@
-1. H:et i LDRH respektive STRH innebär halfword vilket är vad som inom assembler representerar 2 Bytes (16 bitar, bit 0-15) medan b:et i LDRB respektive STRB innebär Byte vilket representerar 1 Byte (8 bitar, bit 0-7), därav att bit 8-15 endast påverkas LDRH/STRH
-
-2. 

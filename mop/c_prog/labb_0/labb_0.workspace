@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="labb_0" Database="" Version="10000">
+  <Project Name="fibonacci" Path="fibonacci/fibonacci.project" Active="Yes"/>
+  <Project Name="goldbach_conjecture" Path="goldbach_conjecture/goldbach_conjecture.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="fibonacci" ConfigName="Debug"/>
+      <Project Name="goldbach_conjecture" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="fibonacci" ConfigName="Release"/>
+      <Project Name="goldbach_conjecture" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
