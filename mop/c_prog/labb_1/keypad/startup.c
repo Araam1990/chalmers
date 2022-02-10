@@ -29,7 +29,7 @@ void app_init(void)
     *GPIO_PUPDR &= 0x0000FFFF;
     *GPIO_PUPDR |= 0x00AA0000;
     
-    *GPIO_OTYPER &= 0x0FFF
+    *GPIO_OTYPER &= 0x0FFF;
 }
 
 

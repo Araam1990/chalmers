@@ -3,17 +3,17 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=keypad
+ProjectName            :=uppg5_4
 ConfigurationName      :=Debug
-WorkspacePath          :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1
-ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keypad
+WorkspacePath          :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5
+ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/uppg5_4
 IntermediateDirectory  :=$(ConfigurationName)
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Dennis Christensen
-Date                   :=08/02/2022
+Date                   :=10/02/2022
 CodeLitePath           :="/Users/dennischristensen/Library/Application Support/CodeLite"
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-gcc
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="keypad.txt"
+ObjectsFileList        :="uppg5_4.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  -T$(ProjectPath)/md407-ram.x -L$(ARM_V6LIB) -L$(ARM_GCC_V6LIB) -nostdlib -nostartfiles
@@ -86,8 +86,8 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  Debug/keypad Debug/keypad.s19
-	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objdump -D -S Debug/keypad > Debug/keypad.lst
+	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  Debug/uppg5_4 Debug/uppg5_4.s19
+	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objdump -D -S Debug/uppg5_4 > Debug/uppg5_4.lst
 	@echo Done
 
 MakeIntermediateDirs:
@@ -105,7 +105,7 @@ PreBuild:
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
-	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keypad/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/uppg5_4/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(PreprocessSuffix): startup.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/startup.c$(PreprocessSuffix) startup.c
 

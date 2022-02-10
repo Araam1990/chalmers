@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=keypad
+ProjectName            :=keyb_alt_ctrl
 ConfigurationName      :=Debug
 WorkspacePath          :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1
-ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keypad
+ProjectPath            :=/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keyb_alt_ctrl
 IntermediateDirectory  :=$(ConfigurationName)
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="keypad.txt"
+ObjectsFileList        :="keyb_alt_ctrl.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  -T$(ProjectPath)/md407-ram.x -L$(ARM_V6LIB) -L$(ARM_GCC_V6LIB) -nostdlib -nostartfiles
@@ -86,8 +86,8 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  Debug/keypad Debug/keypad.s19
-	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objdump -D -S Debug/keypad > Debug/keypad.lst
+	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objcopy -S -O srec  Debug/keyb_alt_ctrl Debug/keyb_alt_ctrl.s19
+	/Applications/codelite.app/Contents/SharedSupport//tools/gcc-arm/bin/arm-none-eabi-objdump -D -S Debug/keyb_alt_ctrl > Debug/keyb_alt_ctrl.lst
 	@echo Done
 
 MakeIntermediateDirs:
@@ -105,7 +105,7 @@ PreBuild:
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
-	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keypad/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "/Users/dennischristensen/Documents/chalmers/mop/c_prog/labb_1/keyb_alt_ctrl/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(PreprocessSuffix): startup.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/startup.c$(PreprocessSuffix) startup.c
 
