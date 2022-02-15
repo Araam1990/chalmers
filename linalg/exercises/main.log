@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.24)  14 FEB 2022 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.24)  14 FEB 2022 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -268,40 +268,58 @@ $\OML/cmm/m/it/10 L\OT1/cmr/m/n/10 1 : []  \OML/cmm/m/it/10 L\OT1/cmr/m/n/10 2
 (./exercises/chapter_1/uppg1_26.tex) (./exercises/chapter_1/uppg1_27.tex
 [11]) (./exercises/chapter_1/uppg1_28.tex) (./exercises/chapter_1/uppg1_29.tex)
 ) (./chapters/chapter_2.tex (./exercises/chapter_2/uppg2_1.tex [12])
-(./exercises/chapter_2/uppg2_2.tex) (./exercises/chapter_2/uppg2_3.tex)
-(./exercises/chapter_2/uppg2_4.tex) (./exercises/chapter_2/uppg2_5.tex)
-(./exercises/chapter_2/uppg2_6.tex [13]) (./exercises/chapter_2/uppg2_7.tex))
+(./exercises/chapter_2/uppg2_2.tex) (./exercises/chapter_2/uppg2_3.tex
+Overfull \hbox (73.58615pt too wide) in paragraph at lines 27--57
+[]$\OML/cmm/m/it/10 AB \OT1/cmr/m/n/10 = []  \OML/cmm/m/it/10 BA \OT1/cmr/m/n/1
+0 = []  \OML/cmm/m/it/10 A[] \OT1/cmr/m/n/10 = []  [] \OML/cmm/m/it/10 CD \OT1/
+cmr/m/n/10 =
+ []
+
+) (./exercises/chapter_2/uppg2_4.tex
+Overfull \hbox (34.71683pt too wide) in paragraph at lines 27--50
+[]$\OML/cmm/m/it/10 A[] \OT1/cmr/m/n/10 = []  \OML/cmm/m/it/10 B[] \OT1/cmr/m/n
+/10 = []  \OML/cmm/m/it/10 C[] \OT1/cmr/m/n/10 = []  \OML/cmm/m/it/10 D[] \OT1/
+cmr/m/n/10 = []$ 
+ []
+
+[13]) (./exercises/chapter_2/uppg2_5.tex
+Overfull \hbox (2.6598pt too wide) in paragraph at lines 2--25
+$\OML/cmm/m/it/10 A \OT1/cmr/m/n/10 = [] = []  \OML/cmm/m/it/10 B \OT1/cmr/m/n/
+10 = []  \OML/cmm/m/it/10 C \OT1/cmr/m/n/10 = [] = []$ 
+ []
+
+) (./exercises/chapter_2/uppg2_6.tex) (./exercises/chapter_2/uppg2_7.tex))
 (./chapters/chapter_3.tex) (./chapters/chapter_4.tex) (./chapters/chapter_5.tex
 ) (./chapters/chapter_6.tex) (./chapters/chapter_7.tex)
-(./chapters/chapter_8.tex) (./chapters/chapter_9.tex) [14] (./main.aux) ) 
+(./chapters/chapter_8.tex) (./chapters/chapter_9.tex) [14] [15] (./main.aux) ) 
 Here is how much of TeX's memory you used:
  2539 strings out of 480445
  39391 string characters out of 5892391
- 344682 words of memory out of 5000000
+ 346682 words of memory out of 5000000
  19658 multiletter control sequences out of 15000+600000
  409652 words of font info for 49 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  72i,9n,78p,209b,191s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/
-local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
-usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
-0.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi5.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi7.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021basic/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021basic/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (14 pages, 320818 bytes).
+<
+/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
+fb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmex10.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi5.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021basic/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on main.pdf (15 pages, 323637 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 118 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

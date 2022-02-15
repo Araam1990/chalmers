@@ -33,13 +33,13 @@
 \contentsline {subsection}{\numberline {2.2}}{13}{}%
 \contentsline {subsection}{\numberline {2.3}}{13}{}%
 \contentsline {subsection}{\numberline {2.4}}{13}{}%
-\contentsline {subsection}{\numberline {2.5}}{13}{}%
+\contentsline {subsection}{\numberline {2.5}}{14}{}%
 \contentsline {subsection}{\numberline {2.6}}{14}{}%
 \contentsline {subsection}{\numberline {2.7}}{14}{}%
-\contentsline {section}{\numberline {3}Geometriska linjära avbildningar}{14}{}%
-\contentsline {section}{\numberline {4}Rummet $R^n$}{14}{}%
-\contentsline {section}{\numberline {5}Linjära ekvationssytem}{14}{}%
-\contentsline {section}{\numberline {6}Determinant}{14}{}%
-\contentsline {section}{\numberline {7}Baser}{14}{}%
-\contentsline {section}{\numberline {8}Egenvärden och vektorer}{14}{}%
-\contentsline {section}{\numberline {9}Grafer och grannmatriser}{14}{}%
+\contentsline {section}{\numberline {3}Geometriska linjära avbildningar}{15}{}%
+\contentsline {section}{\numberline {4}Rummet $R^n$}{15}{}%
+\contentsline {section}{\numberline {5}Linjära ekvationssytem}{15}{}%
+\contentsline {section}{\numberline {6}Determinant}{15}{}%
+\contentsline {section}{\numberline {7}Baser}{15}{}%
+\contentsline {section}{\numberline {8}Egenvärden och vektorer}{15}{}%
+\contentsline {section}{\numberline {9}Grafer och grannmatriser}{15}{}%
