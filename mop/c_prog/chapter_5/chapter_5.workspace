@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="chapter_5" Database="" Version="10000">
   <Project Name="uppg5_3" Path="uppg5_3/uppg5_3.project" Active="No"/>
-  <Project Name="uppg5_4-9" Path="uppg5_4/uppg5_4.project" Active="Yes"/>
+  <Project Name="uppg5_10" Path="uppg5_10/uppg5_10.project" Active="No"/>
+  <Project Name="uppg5_12" Path="uppg5_12/uppg5_12.project" Active="No"/>
+  <Project Name="uppg5_13" Path="uppg5_13/uppg5_13.project" Active="No"/>
+  <Project Name="uppg5_14" Path="uppg5_14/uppg5_14.project" Active="No"/>
+  <Project Name="uppg5_15" Path="uppg5_15/uppg5_15.project" Active="No"/>
+  <Project Name="uppg5_16" Path="uppg5_16/uppg5_16.project" Active="No"/>
+  <Project Name="uppg5_17" Path="uppg5_17/uppg5_17.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="uppg5_3" ConfigName="Debug"/>
       <Project Name="uppg5_4-9" ConfigName="Debug"/>
+      <Project Name="uppg5_10" ConfigName="Debug"/>
+      <Project Name="uppg5_12" ConfigName="Debug"/>
+      <Project Name="uppg5_13" ConfigName="Debug"/>
+      <Project Name="uppg5_14" ConfigName="Debug"/>
+      <Project Name="uppg5_15" ConfigName="Debug"/>
+      <Project Name="uppg5_16" ConfigName="Debug"/>
+      <Project Name="uppg5_17" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="uppg5_3" ConfigName="Release"/>
       <Project Name="uppg5_4-9" ConfigName="Release"/>
+      <Project Name="uppg5_10" ConfigName="Release"/>
+      <Project Name="uppg5_12" ConfigName="Release"/>
+      <Project Name="uppg5_13" ConfigName="Release"/>
+      <Project Name="uppg5_14" ConfigName="Release"/>
+      <Project Name="uppg5_15" ConfigName="Release"/>
+      <Project Name="uppg5_16" ConfigName="Release"/>
+      <Project Name="uppg5_17" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

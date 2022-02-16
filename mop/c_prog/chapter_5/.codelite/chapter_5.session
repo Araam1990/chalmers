@@ -1,48 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/chapter_5.workspace">
-  <int Value="1" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/chapter_5.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/uppg5_3/startup.c" Name="FileName"/>
-      <int Value="12" Name="FirstVisibleLine"/>
-      <int Value="24" Name="CurrentLine"/>
+      <wxString Value="/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/uppg5_17/startup.c" Name="FileName"/>
+      <int Value="265" Name="FirstVisibleLine"/>
+      <int Value="271" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="19"/>
-        <IntVectorItem Value="24"/>
-        <IntVectorItem Value="34"/>
-        <IntVectorItem Value="42"/>
-        <IntVectorItem Value="50"/>
-      </IntVector>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Users/dennischristensen/Documents/chalmers/mop/c_prog/chapter_5/uppg5_4/startup.c" Name="FileName"/>
-      <int Value="89" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="36"/>
-        <IntVectorItem Value="41"/>
-        <IntVectorItem Value="52"/>
-        <IntVectorItem Value="58"/>
-        <IntVectorItem Value="64"/>
-        <IntVectorItem Value="69"/>
-        <IntVectorItem Value="74"/>
-        <IntVectorItem Value="82"/>
-        <IntVectorItem Value="88"/>
-        <IntVectorItem Value="95"/>
-        <IntVectorItem Value="105"/>
-        <IntVectorItem Value="115"/>
-        <IntVectorItem Value="124"/>
-        <IntVectorItem Value="132"/>
-        <IntVectorItem Value="138"/>
-        <IntVectorItem Value="144"/>
-        <IntVectorItem Value="150"/>
-        <IntVectorItem Value="156"/>
-        <IntVectorItem Value="165"/>
-        <IntVectorItem Value="174"/>
-      </IntVector>
+      <IntVector Name="CollapsedFolds"/>
     </TabInfo>
   </TabInfoArray>
   <SerializedObject Name="m_breakpoints">
