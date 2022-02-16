@@ -158,7 +158,7 @@ void main(void)
     while (1)
     {
         draw_polygon(&pg1);
-        delay_milli(1);
+        delay_milli(200);
         graphic_clear_screen();
     }
 }

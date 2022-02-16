@@ -300,6 +300,6 @@ void main(void)
         }
         if (overlapping(b, s) || (s->posx + s->geo->sizex) < 1 || s->posx > 128 || (s->posy + s->geo->sizey) < 1 || s->posy > 64)
             break;
-        delay_mikro(10);
+        delay_milli(20);
     }
 }

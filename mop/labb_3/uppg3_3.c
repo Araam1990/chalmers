@@ -321,7 +321,6 @@ void main(void)
         {
             break;
         }
-
-        delay_mikro(20);
+        delay_milli(20);
     }
 }
